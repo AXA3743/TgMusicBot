@@ -136,8 +136,9 @@ async def _handle_single_track(
 
         song.file_path = download_result
         if not download_result:
-            return await edit_text(msg, "❌ Failed to download track")
-
+            await edit_text(msg, "❌ Failed to download track")
+            return
+            
     # Get duration if not provided
     song.duration = song.duration or await get_audio_duration(song.file_path)
 
